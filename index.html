@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merlyn Thomas Cyril — Piano Teacher | West Byfleet, Surrey</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pink: #FF6B9D;
+  --pink-hot: #FF2D78;
+  --pink-soft: #FFD1E3;
+  --purple: #9B5DE5;
+  --purple-soft: #D4BBFF;
+  --teal: #00C9A7;
+  --teal-soft: #B8F3E4;
+  --yellow: #FFD166;
+  --yellow-bright: #FFE44D;
+  --orange: #FF8C42;
+  --coral: #FF6B6B;
+  --sky: #00BBF9;
+  --sky-soft: #B8ECFF;
+  --lime: #C5F940;
+  --indigo: #2B2D7B;
+  --navy: #1A1A4E;
+  --white: #FFFFFF;
+  --bg1: #FFF7F0;
+  --bg2: #F8F0FF;
+  --bg3: #F0FFF8;
+  --bg4: #FFF5F7;
+  --text: #2B2052;
+  --text2: #5B4F8A;
+  --text3: #9088B5;
+  --shadow: rgba(155, 93, 229, 0.12);
+  --shadow-pink: rgba(255, 107, 157, 0.25);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Baloo 2',cursive;background:var(--bg1);color:var(--text);overflow-x:hidden;line-height:1.7;}
+
+/* === RAINBOW BAR TOP === */
+.rainbow-bar{position:fixed;top:0;left:0;right:0;height:4px;z-index:200;
+  background:linear-gradient(90deg,var(--coral),var(--orange),var(--yellow),var(--lime),var(--teal),var(--sky),var(--purple),var(--pink));
+}
+
+/* === NAV === */
+nav{
+  position:fixed;top:4px;left:0;right:0;z-index:100;
+  padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;
+  transition:all .4s;background:transparent;
+}
+nav.scrolled{
+  background:rgba(255,247,240,.96);backdrop-filter:blur(14px);
+  box-shadow:0 4px 30px var(--shadow);padding:.7rem 3rem;
+}
+.logo{
+  font-family:'Fredoka',sans-serif;font-size:1.8rem;font-weight:700;
+  background:linear-gradient(135deg,var(--pink),var(--purple),var(--teal));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.nav-links{display:flex;gap:1.8rem;list-style:none;}
+.nav-links a{
+  text-decoration:none;color:var(--text2);font-size:.82rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;position:relative;transition:color .3s;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-3px;left:0;width:0;height:3px;
+  border-radius:2px;transition:width .3s;
+  background:linear-gradient(90deg,var(--pink),var(--yellow));
+}
+.nav-links a:hover{color:var(--pink-hot);}
+.nav-links a:hover::after{width:100%;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:200;}
+.hamburger span{width:26px;height:3px;background:var(--purple);border-radius:3px;transition:all .3s;}
+
+/* === HERO === */
+.hero{
+  min-height:100vh;display:flex;align-items:center;padding:7rem 3rem 4rem;
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#FFF7F0 0%,#FFF0F7 25%,#F5F0FF 50%,#F0FFF8 75%,#FFFEF0 100%);
+}
+.hero-blobs{position:absolute;inset:0;pointer-events:none;}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);animation:blobFloat 20s infinite ease-in-out;}
+.blob-1{width:500px;height:500px;background:rgba(255,107,157,.12);top:-10%;left:-5%;animation-delay:0s;}
+.blob-2{width:400px;height:400px;background:rgba(0,187,249,.1);top:20%;right:-5%;animation-delay:4s;}
+.blob-3{width:350px;height:350px;background:rgba(0,201,167,.08);bottom:-5%;left:30%;animation-delay:8s;}
+.blob-4{width:300px;height:300px;background:rgba(255,209,102,.1);top:50%;left:10%;animation-delay:12s;}
+.blob-5{width:250px;height:250px;background:rgba(155,93,229,.08);bottom:10%;right:20%;animation-delay:6s;}
+
+.hero-content{
+  max-width:1200px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+  position:relative;z-index:1;
+}
+.hero-text{animation:fadeUp 1s ease .2s both;}
+
+.hero-pill{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:1.5rem;
+  background:rgba(0,201,167,.1);padding:.45rem 1.2rem;border-radius:50px;
+  border:1.5px solid rgba(0,201,167,.15);
+}
+.hero-pill::before{content:'🎹';font-size:.95rem;}
+
+h1{
+  font-family:'Fredoka',sans-serif;
+  font-size:clamp(2.5rem,5vw,3.8rem);font-weight:700;line-height:1.15;
+  margin-bottom:1.5rem;
+}
+h1 .gradient{
+  background:linear-gradient(135deg,var(--pink-hot),var(--purple),var(--sky));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-desc{
+  font-size:1.05rem;color:var(--text3);max-width:480px;margin-bottom:2.5rem;
+  font-weight:500;line-height:1.85;
+}
+.hero-cta{display:inline-flex;gap:1rem;flex-wrap:wrap;}
+.btn{
+  padding:.9rem 2rem;border-radius:50px;text-decoration:none;
+  font-family:'Baloo 2',cursive;font-size:.9rem;font-weight:700;
+  transition:all .35s;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:.4rem;
+}
+.btn-fun{
+  background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));
+  color:#fff;box-shadow:0 6px 25px var(--shadow-pink);
+}
+.btn-fun:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 12px 35px var(--shadow-pink);}
+.btn-ghost{
+  background:transparent;color:var(--purple);border:2.5px solid var(--purple-soft);
+}
+.btn-ghost:hover{border-color:var(--purple);background:rgba(155,93,229,.05);transform:translateY(-2px);}
+
+/* Hero Card */
+.hero-visual{display:flex;justify-content:center;align-items:center;animation:fadeUp 1s ease .5s both;}
+.piano-card{
+  width:100%;max-width:400px;background:var(--white);border-radius:28px;padding:2rem 2rem 2.2rem;
+  box-shadow:0 24px 60px var(--shadow);position:relative;overflow:hidden;
+}
+.piano-card .rainbow-strip{
+  position:absolute;top:0;left:0;right:0;height:6px;
+  background:linear-gradient(90deg,var(--coral),var(--orange),var(--yellow),var(--lime),var(--teal),var(--sky),var(--purple),var(--pink));
+}
+.piano-keys-wrap{margin-bottom:1.8rem;position:relative;}
+.piano-keys{display:flex;gap:3px;height:120px;justify-content:center;}
+.wk{
+  width:34px;height:100%;background:#fff;
+  border:2px solid #EDE9FE;border-radius:0 0 10px 10px;
+  transition:all .15s;cursor:pointer;position:relative;
+}
+.wk:hover{transform:translateY(3px);}
+.wk:nth-child(1):hover{background:#FDE68A;border-color:#FCD34D;}
+.wk:nth-child(2):hover{background:#FBCFE8;border-color:#F9A8D4;}
+.wk:nth-child(3):hover{background:#A7F3D0;border-color:#6EE7B7;}
+.wk:nth-child(4):hover{background:#BAE6FD;border-color:#7DD3FC;}
+.wk:nth-child(5):hover{background:#DDD6FE;border-color:#C4B5FD;}
+.wk:nth-child(6):hover{background:#FED7AA;border-color:#FDBA74;}
+.wk:nth-child(7):hover{background:#FECDD3;border-color:#FDA4AF;}
+.wk:nth-child(8):hover{background:#CCFBF1;border-color:#99F6E4;}
+
+.card-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;text-align:center;}
+.stat-num{font-family:'Fredoka',sans-serif;font-size:1.5rem;font-weight:700;}
+.card-stats>div:nth-child(1) .stat-num{color:var(--pink);}
+.card-stats>div:nth-child(2) .stat-num{color:var(--purple);}
+.card-stats>div:nth-child(3) .stat-num{color:var(--teal);}
+.stat-label{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);font-weight:700;}
+
+.floating-notes{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.note{position:absolute;font-size:2rem;animation:floatNote 20s infinite linear;}
+.note:nth-child(1){color:var(--pink);opacity:.07;}
+.note:nth-child(2){color:var(--purple);opacity:.06;}
+.note:nth-child(3){color:var(--teal);opacity:.05;}
+.note:nth-child(4){color:var(--yellow);opacity:.08;}
+.note:nth-child(5){color:var(--sky);opacity:.06;}
+.note:nth-child(6){color:var(--orange);opacity:.07;}
+
+/* === SECTION COMMON === */
+section{padding:6rem 3rem;}
+.sec-head{text-align:center;max-width:600px;margin:0 auto 3.5rem;}
+.sec-pill{
+  display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;padding:.35rem 1.1rem;border-radius:50px;margin-bottom:.7rem;
+}
+.sec-title{font-family:'Fredoka',sans-serif;font-size:clamp(1.7rem,3vw,2.4rem);font-weight:700;margin-bottom:.6rem;}
+.sec-sub{color:var(--text3);font-size:.95rem;font-weight:500;}
+
+/* === ABOUT === */
+#about{background:var(--bg2);}
+#about .sec-pill{background:rgba(155,93,229,.1);color:var(--purple);}
+.about-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center;}
+.about-img-area{position:relative;}
+.about-photo{
+  width:100%;aspect-ratio:4/5;object-fit:cover;
+  border-radius:24px;
+  box-shadow:0 20px 50px var(--shadow);
+}
+.about-photo .ico{font-size:3.5rem;}
+.about-badge{
+  position:absolute;bottom:-18px;right:-18px;
+  background:linear-gradient(135deg,var(--orange),var(--pink));
+  color:#fff;padding:1.1rem 1.4rem;border-radius:18px;text-align:center;
+  box-shadow:0 8px 30px var(--shadow-pink);animation:wiggle 4s ease infinite;
+}
+.about-badge .num{font-family:'Fredoka',sans-serif;font-size:2rem;font-weight:700;}
+.about-badge .lbl{font-size:.58rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;opacity:.9;}
+.about-text h3{font-family:'Fredoka',sans-serif;font-size:1.7rem;font-weight:700;margin-bottom:1rem;}
+.about-text h3 .hand{font-size:1.8rem;}
+.about-text h3 .name{
+  background:linear-gradient(135deg,var(--pink),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.about-text p{color:var(--text3);margin-bottom:1rem;font-weight:500;line-height:1.85;}
+.creds{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem;}
+.cred{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.4rem .9rem;border-radius:50px;font-size:.75rem;font-weight:700;
+}
+.cred:nth-child(1){background:rgba(255,107,157,.1);color:var(--pink-hot);}
+.cred:nth-child(2){background:rgba(155,93,229,.1);color:var(--purple);}
+.cred:nth-child(3){background:rgba(0,201,167,.1);color:var(--teal);}
+.cred:nth-child(4){background:rgba(255,209,102,.12);color:#B45309;}
+.cred:nth-child(5){background:rgba(0,187,249,.1);color:#0369A1;}
+.cred::before{content:'⭐';font-size:.55rem;}
+
+/* === WHY === */
+#why{background:var(--bg1);}
+#why .sec-pill{background:rgba(0,201,167,.1);color:var(--teal);}
+.why-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.why-card{
+  background:var(--white);border-radius:22px;padding:2rem 1.6rem;
+  transition:all .4s;position:relative;overflow:hidden;
+  border:2.5px solid transparent;
+}
+.why-card:nth-child(1){border-color:rgba(255,107,157,.15);}
+.why-card:nth-child(2){border-color:rgba(0,187,249,.15);}
+.why-card:nth-child(3){border-color:rgba(0,201,167,.15);}
+.why-card:nth-child(4){border-color:rgba(255,209,102,.18);}
+.why-card:nth-child(5){border-color:rgba(155,93,229,.15);}
+.why-card:nth-child(6){border-color:rgba(255,107,107,.15);}
+.why-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  opacity:0;transition:opacity .3s;
+}
+.why-card:nth-child(1)::before{background:linear-gradient(90deg,var(--pink),var(--orange));}
+.why-card:nth-child(2)::before{background:linear-gradient(90deg,var(--sky),var(--teal));}
+.why-card:nth-child(3)::before{background:linear-gradient(90deg,var(--teal),var(--lime));}
+.why-card:nth-child(4)::before{background:linear-gradient(90deg,var(--yellow),var(--orange));}
+.why-card:nth-child(5)::before{background:linear-gradient(90deg,var(--purple),var(--pink));}
+.why-card:nth-child(6)::before{background:linear-gradient(90deg,var(--coral),var(--yellow));}
+.why-card:hover{transform:translateY(-7px);box-shadow:0 20px 50px var(--shadow);}
+.why-card:hover::before{opacity:1;}
+.wicon{
+  width:54px;height:54px;border-radius:16px;
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.1rem;
+}
+.why-card:nth-child(1) .wicon{background:rgba(255,107,157,.12);}
+.why-card:nth-child(2) .wicon{background:rgba(0,187,249,.12);}
+.why-card:nth-child(3) .wicon{background:rgba(0,201,167,.12);}
+.why-card:nth-child(4) .wicon{background:rgba(255,209,102,.15);}
+.why-card:nth-child(5) .wicon{background:rgba(155,93,229,.12);}
+.why-card:nth-child(6) .wicon{background:rgba(255,107,107,.12);}
+.why-card h4{font-size:1.05rem;font-weight:700;margin-bottom:.6rem;}
+.why-card p{font-size:.85rem;color:var(--text3);font-weight:500;line-height:1.75;}
+
+/* === OFFERINGS === */
+#offerings{background:var(--bg3);}
+#offerings .sec-pill{background:rgba(255,107,157,.1);color:var(--pink-hot);}
+.off-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.off-card{
+  background:var(--white);border-radius:22px;padding:2.5rem;
+  transition:all .4s;position:relative;overflow:hidden;
+}
+.off-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;}
+.off-card:nth-child(1)::before{background:linear-gradient(90deg,var(--teal),var(--sky));}
+.off-card:nth-child(2)::before{background:linear-gradient(90deg,var(--purple),var(--pink));}
+.off-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px var(--shadow);}
+.off-badge{
+  display:inline-block;padding:.35rem 1rem;border-radius:50px;
+  font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:1.1rem;
+}
+.off-badge.person{background:rgba(0,201,167,.12);color:var(--teal);}
+.off-badge.online{background:rgba(155,93,229,.12);color:var(--purple);}
+.off-card h4{font-family:'Fredoka',sans-serif;font-size:1.3rem;font-weight:600;margin-bottom:.7rem;}
+.off-card p{font-size:.88rem;color:var(--text3);line-height:1.75;font-weight:500;}
+.off-details{
+  margin-top:1.4rem;padding-top:1.4rem;
+  border-top:2px dashed rgba(155,93,229,.12);
+  display:flex;flex-direction:column;gap:.55rem;
+}
+.off-item{display:flex;align-items:center;gap:.5rem;font-size:.83rem;color:var(--text2);font-weight:600;}
+.off-item::before{content:'♪';font-size:.7rem;color:var(--pink);}
+
+/* === CURRICULUM === */
+#curriculum{background:var(--bg1);}
+#curriculum .sec-pill{background:rgba(255,209,102,.15);color:#92400E;}
+.curr-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.curr-card{
+  background:var(--white);border-radius:22px;padding:2rem;
+  border-left:5px solid transparent;transition:all .3s;
+}
+.curr-card:nth-child(1){border-left-color:var(--pink);}
+.curr-card:nth-child(2){border-left-color:var(--purple);}
+.curr-card:nth-child(3){border-left-color:var(--teal);}
+.curr-card:nth-child(4){border-left-color:var(--yellow);}
+.curr-card:hover{transform:translateY(-3px);box-shadow:0 12px 35px var(--shadow);}
+.curr-card h4{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;}
+.curr-card p{font-size:.85rem;color:var(--text3);line-height:1.75;font-weight:500;}
+
+/* === TESTIMONIALS === */
+#testimonials{
+  background:linear-gradient(135deg,var(--navy),var(--indigo),#3B1D8E);
+  color:#fff;position:relative;overflow:hidden;
+}
+#testimonials::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 20% 30%,rgba(255,107,157,.12),transparent 50%),
+    radial-gradient(circle at 80% 70%,rgba(0,201,167,.1),transparent 50%),
+    radial-gradient(circle at 50% 50%,rgba(255,209,102,.06),transparent 50%);
+}
+#testimonials .sec-pill{background:rgba(255,209,102,.15);color:var(--yellow);}
+#testimonials .sec-title{color:#fff;}
+#testimonials .sec-sub{color:rgba(255,255,255,.5);}
+.test-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;position:relative;z-index:1;}
+.test-card{
+  background:rgba(255,255,255,.06);border-radius:22px;padding:2.5rem;
+  border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px);position:relative;
+}
+.test-card::before{
+  content:'"';font-family:'Fredoka',sans-serif;font-size:5rem;
+  position:absolute;top:5px;left:18px;line-height:1;opacity:.12;
+}
+.test-card:nth-child(1)::before{color:var(--pink);}
+.test-card:nth-child(2)::before{color:var(--teal);}
+.test-text{font-size:.92rem;line-height:1.8;color:rgba(255,255,255,.7);font-style:italic;font-weight:500;margin-bottom:1.3rem;position:relative;z-index:1;}
+.test-author{font-weight:700;font-size:.83rem;color:var(--yellow);}
+.test-role{font-size:.72rem;color:rgba(255,255,255,.35);margin-top:.15rem;}
+.test-note{text-align:center;margin-top:2.5rem;font-size:.82rem;color:rgba(255,255,255,.3);font-style:italic;position:relative;z-index:1;}
+
+/* === GALLERY === */
+#gallery{background:var(--bg2);}
+#gallery .sec-pill{background:rgba(0,187,249,.1);color:#0369A1;}
+.gal-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.gal-ph{
+  aspect-ratio:4/3;border-radius:20px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:.82rem;font-weight:700;color:var(--text2);gap:.4rem;transition:transform .3s;
+}
+.gal-ph:nth-child(1){background:linear-gradient(135deg,var(--pink-soft),var(--purple-soft));}
+.gal-ph:nth-child(2){background:linear-gradient(135deg,var(--teal-soft),var(--sky-soft));}
+.gal-ph:nth-child(3){background:linear-gradient(135deg,var(--yellow),var(--pink-soft));}
+.gal-ph:hover{transform:scale(1.04) rotate(1deg);}
+.gal-ph .ico{font-size:2.2rem;}
+
+/* === CONTACT === */
+#contact{background:var(--bg1);}
+#contact .sec-pill{background:rgba(155,93,229,.1);color:var(--purple);}
+.contact-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.contact-info h3{font-family:'Fredoka',sans-serif;font-size:1.7rem;font-weight:700;margin-bottom:.8rem;}
+.contact-info h3 .hl{color:var(--pink);}
+.contact-info>p{color:var(--text3);margin-bottom:2rem;line-height:1.8;font-weight:500;}
+.ci{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.4rem;}
+.ci-icon{
+  width:48px;height:48px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;
+}
+.ci:nth-child(2) .ci-icon{background:rgba(255,107,157,.1);}
+.ci:nth-child(3) .ci-icon{background:rgba(155,93,229,.1);}
+.ci:nth-child(4) .ci-icon{background:rgba(0,201,167,.1);}
+.ci-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);font-weight:700;}
+.ci-val{font-weight:700;color:var(--text);font-size:.93rem;}
+.ci-val a{color:var(--text);text-decoration:none;transition:color .3s;}
+.ci-val a:hover{color:var(--pink);}
+
+.contact-form{
+  background:var(--white);border-radius:24px;padding:2.5rem;
+  box-shadow:0 14px 50px var(--shadow);border:2px solid rgba(155,93,229,.06);
+}
+.contact-form h4{font-family:'Fredoka',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:1.3rem;}
+.fg{margin-bottom:1.1rem;}
+.fg label{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:.35rem;}
+.fg input,.fg textarea,.fg select{
+  width:100%;padding:.8rem 1rem;border:2.5px solid #EDE9FE;border-radius:14px;
+  background:var(--bg2);font-family:'Baloo 2',cursive;font-size:.88rem;color:var(--text);
+  transition:border-color .3s,box-shadow .3s;outline:none;font-weight:600;
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{
+  border-color:var(--purple);box-shadow:0 0 0 4px rgba(155,93,229,.1);
+}
+.fg textarea{resize:vertical;min-height:95px;}
+.form-btn{
+  width:100%;padding:1rem;
+  background:linear-gradient(135deg,var(--pink),var(--orange),var(--yellow));
+  color:#fff;border:none;border-radius:50px;
+  font-family:'Baloo 2',cursive;font-size:.95rem;font-weight:700;
+  cursor:pointer;transition:all .35s;
+}
+.form-btn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 12px 30px var(--shadow-pink);}
+
+/* === AVAILABILITY === */
+#availability{background:var(--bg4);}
+#availability .sec-pill{background:rgba(0,201,167,.1);color:var(--teal);}
+.avail-wrap{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:start;}
+.avail-schedule{background:var(--white);border-radius:22px;padding:2.2rem;box-shadow:0 12px 40px var(--shadow);overflow:hidden;position:relative;}
+.avail-schedule::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--teal),var(--sky),var(--purple));}
+.avail-schedule h4{font-family:'Fredoka',sans-serif;font-size:1.2rem;font-weight:600;margin-bottom:1.3rem;display:flex;align-items:center;gap:.5rem;}
+.avail-table{width:100%;border-collapse:separate;border-spacing:0 .5rem;}
+.avail-table th{
+  text-align:left;font-size:.68rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.1em;color:var(--text3);padding:.4rem .8rem;
+}
+.avail-table td{padding:.7rem .8rem;font-size:.88rem;font-weight:600;color:var(--text);}
+.avail-table tr td:first-child{
+  border-radius:10px 0 0 10px;
+}
+.avail-table tr td:last-child{
+  border-radius:0 10px 10px 0;
+}
+.avail-table tbody tr{transition:all .2s;}
+.avail-table tbody tr:nth-child(1) td{background:rgba(255,107,157,.06);}
+.avail-table tbody tr:nth-child(2) td{background:rgba(0,187,249,.06);}
+.avail-table tbody tr:nth-child(3) td{background:rgba(155,93,229,.06);}
+.avail-table tbody tr:nth-child(4) td{background:rgba(0,201,167,.06);}
+.avail-table tbody tr:nth-child(5) td{background:rgba(255,209,102,.08);}
+.avail-table tbody tr:nth-child(6) td{background:rgba(255,140,66,.06);}
+.avail-table tbody tr:nth-child(7) td{background:rgba(255,107,107,.06);}
+.avail-table tbody tr:hover td{filter:brightness(.97);transform:scale(1.01);}
+.day-dot{
+  display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:.5rem;vertical-align:middle;
+}
+.avail-table tbody tr:nth-child(1) .day-dot{background:var(--pink);}
+.avail-table tbody tr:nth-child(2) .day-dot{background:var(--sky);}
+.avail-table tbody tr:nth-child(3) .day-dot{background:var(--purple);}
+.avail-table tbody tr:nth-child(4) .day-dot{background:var(--teal);}
+.avail-table tbody tr:nth-child(5) .day-dot{background:var(--yellow);}
+.avail-table tbody tr:nth-child(6) .day-dot{background:var(--orange);}
+.avail-table tbody tr:nth-child(7) .day-dot{background:var(--coral);}
+.status-badge{
+  display:inline-block;padding:.2rem .7rem;border-radius:50px;font-size:.7rem;font-weight:700;
+}
+.status-open{background:rgba(0,201,167,.12);color:var(--teal);}
+.status-limited{background:rgba(255,209,102,.15);color:#92400E;}
+.status-closed{background:rgba(155,93,229,.08);color:var(--text3);}
+
+.avail-cta{
+  background:var(--white);border-radius:22px;padding:2.2rem;
+  box-shadow:0 12px 40px var(--shadow);text-align:center;position:relative;overflow:hidden;
+}
+.avail-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--pink),var(--orange),var(--yellow));}
+.avail-cta .emoji-big{font-size:3rem;margin-bottom:.8rem;}
+.avail-cta h4{font-family:'Fredoka',sans-serif;font-size:1.15rem;font-weight:600;margin-bottom:.6rem;}
+.avail-cta p{font-size:.88rem;color:var(--text3);font-weight:500;line-height:1.7;margin-bottom:1.5rem;}
+.avail-cta .btn{display:inline-flex;}
+.avail-quick{
+  display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem;
+  padding-top:1.5rem;border-top:2px dashed rgba(155,93,229,.1);text-align:left;
+}
+.avail-quick-item{
+  display:flex;align-items:center;gap:.7rem;font-size:.85rem;font-weight:600;color:var(--text2);
+}
+.avail-quick-icon{
+  width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;
+}
+.avail-quick-item:nth-child(1) .avail-quick-icon{background:rgba(255,107,157,.1);}
+.avail-quick-item:nth-child(2) .avail-quick-icon{background:rgba(0,187,249,.1);}
+.avail-quick-item:nth-child(3) .avail-quick-icon{background:rgba(0,201,167,.1);}
+
+@media(max-width:900px){
+  .avail-wrap{grid-template-columns:1fr;}
+}
+
+/* === FOOTER === */
+footer{
+  background:linear-gradient(135deg,var(--navy),var(--indigo));
+  color:rgba(255,255,255,.5);padding:3rem;text-align:center;font-size:.82rem;
+}
+footer .logo{
+  margin-bottom:.6rem;display:block;
+  font-family:'Fredoka',sans-serif;font-size:1.8rem;font-weight:700;
+  background:linear-gradient(135deg,var(--pink-soft),var(--purple-soft),var(--teal-soft));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+footer p{line-height:1.6;font-weight:600;}
+
+/* === ANIMATIONS === */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes floatNote{
+  0%{transform:translateY(100vh) rotate(0deg);opacity:0;}
+  10%{opacity:.08;}90%{opacity:.08;}
+  100%{transform:translateY(-100px) rotate(360deg);opacity:0;}
+}
+@keyframes blobFloat{
+  0%,100%{transform:translate(0,0) scale(1);}
+  33%{transform:translate(30px,-40px) scale(1.05);}
+  66%{transform:translate(-20px,30px) scale(.95);}
+}
+@keyframes wiggle{
+  0%,100%{transform:rotate(0deg);}
+  25%{transform:rotate(3deg);}
+  75%{transform:rotate(-3deg);}
+}
+.fi{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s;}
+.fi.vis{opacity:1;transform:translateY(0);}
+
+/* === RESPONSIVE === */
+@media(max-width:900px){
+  nav{padding:.9rem 1.5rem;}
+  nav.scrolled{padding:.6rem 1.5rem;}
+  .nav-links{display:none;}
+  .nav-links.open{
+    display:flex;flex-direction:column;position:fixed;inset:0;
+    background:rgba(255,247,240,.98);backdrop-filter:blur(20px);
+    justify-content:center;align-items:center;gap:2.5rem;z-index:150;
+  }
+  .nav-links.open a{font-size:1.1rem;}
+  .hamburger{display:flex;}
+  section{padding:4rem 1.5rem;}
+  .hero{padding:5rem 1.5rem 3rem;}
+  .hero-content{grid-template-columns:1fr;gap:2.5rem;}
+  .hero-visual{order:-1;}
+  .piano-card{max-width:310px;}
+  .about-grid{grid-template-columns:1fr;gap:2rem;}
+  .why-grid{grid-template-columns:1fr;}
+  .off-grid{grid-template-columns:1fr;}
+  .curr-grid{grid-template-columns:1fr;}
+  .test-grid{grid-template-columns:1fr;}
+  .gal-grid{grid-template-columns:1fr 1fr;}
+  .contact-grid{grid-template-columns:1fr;gap:2rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="rainbow-bar"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="logo">Merlyn 🎵</div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#why">Why Merlyn</a></li>
+    <li><a href="#offerings">Lessons</a></li>
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#availability">Availability</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+    <div class="blob blob-5"></div>
+  </div>
+  <div class="floating-notes">
+    <span class="note" style="left:8%;animation-delay:0s;">♩</span>
+    <span class="note" style="left:25%;animation-delay:4s;">♪</span>
+    <span class="note" style="left:48%;animation-delay:8s;">♫</span>
+    <span class="note" style="left:68%;animation-delay:2s;">♬</span>
+    <span class="note" style="left:85%;animation-delay:12s;">♩</span>
+    <span class="note" style="left:38%;animation-delay:16s;">♪</span>
+  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-pill">Piano Lessons in West Byfleet, Surrey</div>
+      <h1>Where music meets <span class="gradient">passion & purpose</span> 🎶</h1>
+      <p class="hero-desc">Personalised piano lessons in West Byfleet for children and young learners, blending Trinity-certified expertise with reward-based motivation to inspire a lifelong love of music.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-fun">✨ Book a Free Trial</a>
+        <a href="#offerings" class="btn btn-ghost">Explore Lessons →</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="piano-card">
+        <div class="rainbow-strip"></div>
+        <div class="piano-keys-wrap">
+          <div class="piano-keys">
+            <div class="wk" data-note="C"></div>
+            <div class="wk" data-note="D"></div>
+            <div class="wk" data-note="E"></div>
+            <div class="wk" data-note="F"></div>
+            <div class="wk" data-note="G"></div>
+            <div class="wk" data-note="A"></div>
+            <div class="wk" data-note="B"></div>
+            <div class="wk" data-note="C2"></div>
+          </div>
+        </div>
+        <div class="card-stats">
+          <div><div class="stat-num">10+</div><div class="stat-label">Years Teaching</div></div>
+          <div><div class="stat-num">Grade 8</div><div class="stat-label">Piano (Trinity)</div></div>
+          <div><div class="stat-num">ABRSM</div><div class="stat-label">& RSL Exams</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-area fi">
+      <img src="IMG_8412.jpeg" alt="Merlyn Thomas Cyril — Piano Teacher" class="about-photo">
+      <div class="about-badge"><div class="num">10</div><div class="lbl">Years Teaching</div></div>
+    </div>
+    <div class="about-text fi">
+      <h3>Hello, I'm <span class="name">Merlyn</span> <span class="hand">👋</span></h3>
+      <p>I'm a passionate music teacher based in West Byfleet, Surrey, with ten years of experience teaching piano, singing, and music theory to children aged 5–16 in school environments. I hold a Grade 8 in Piano, Grade 6 in Music Theory (Distinction) and Grade 6 in Singing (Merit) — all certified by Trinity College London.</p>
+      <p>My journey spans from leading choirs and managing school events in India to now offering personalised private piano lessons here in the UK. I believe every child has musical potential — it just takes the right approach to unlock it.</p>
+      <div class="creds">
+        <span class="cred">Grade 8 Piano — Trinity</span>
+        <span class="cred">Grade 6 Theory — Distinction</span>
+        <span class="cred">Grade 6 Singing — Merit</span>
+        <span class="cred">Church Organist</span>
+        <span class="cred">Choir Trainer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="sec-head fi">
+    <div class="sec-pill">Why Choose Merlyn</div>
+    <h2 class="sec-title">A teaching approach as unique as your child ✨</h2>
+    <p class="sec-sub">Every student learns differently — and that's exactly how I teach</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card fi"><div class="wicon">🏆</div><h4>Reward-Based Motivation</h4><p>Creative incentive systems that encourage regular practice and celebrate milestones, keeping students genuinely engaged and excited to progress.</p></div>
+    <div class="why-card fi"><div class="wicon">🎯</div><h4>Customised Methods</h4><p>Every child is different. Lessons are tailored to each student's learning style, pace, and musical interests — not a rigid one-size-fits-all curriculum.</p></div>
+    <div class="why-card fi"><div class="wicon">🎓</div><h4>Exam Preparation</h4><p>Structured preparation for ABRSM and RSL certification exams, giving students clear goals and internationally recognised qualifications.</p></div>
+    <div class="why-card fi"><div class="wicon">💛</div><h4>Nurturing Environment</h4><p>A warm, supportive space where mistakes are learning opportunities and every student feels confident to explore and express themselves musically.</p></div>
+    <div class="why-card fi"><div class="wicon">🎵</div><h4>Trinity-Certified Expertise</h4><p>Backed by Grade 8 Piano and Grade 6 Theory (Distinction) from Trinity College London — the gold standard in music education.</p></div>
+    <div class="why-card fi"><div class="wicon">📱</div><h4>Flexible Scheduling</h4><p>Both in-person and online lesson options with scheduling that works around your family's life. Convenience without compromising quality.</p></div>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section id="offerings">
+  <div class="sec-head fi">
+    <div class="sec-pill">Lesson Options</div>
+    <h2 class="sec-title">Piano lessons designed around you 🎹</h2>
+    <p class="sec-sub">Choose the format that suits your family best</p>
+  </div>
+  <div class="off-grid">
+    <div class="off-card fi">
+      <span class="off-badge person">🏠 In Person</span>
+      <h4>Face-to-Face Piano Lessons</h4>
+      <p>One-on-one piano tuition at a convenient location in West Byfleet, Surrey. Hands-on guidance with real-time feedback for the most immersive learning experience.</p>
+      <div class="off-details">
+        <div class="off-item">Beginner to intermediate levels</div>
+        <div class="off-item">Located in West Byfleet, Surrey</div>
+        <div class="off-item">Personalised lesson plans</div>
+        <div class="off-item">ABRSM & RSL exam prep available</div>
+      </div>
+    </div>
+    <div class="off-card fi">
+      <span class="off-badge online">💻 Online</span>
+      <h4>Online Piano Lessons</h4>
+      <p>High-quality piano tuition from the comfort of your home via video call. Perfect for families who prefer flexibility or live outside West Byfleet.</p>
+      <div class="off-details">
+        <div class="off-item">Beginner to intermediate levels</div>
+        <div class="off-item">Flexible scheduling</div>
+        <div class="off-item">Personalised lesson plans</div>
+        <div class="off-item">ABRSM & RSL exam prep available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section id="curriculum">
+  <div class="sec-head fi">
+    <div class="sec-pill">Training Curriculum</div>
+    <h2 class="sec-title">A structured path to musical growth 🌟</h2>
+    <p class="sec-sub">Preparing students for ABRSM and RSL certification exams</p>
+  </div>
+  <div class="curr-grid">
+    <div class="curr-card fi"><h4>🎹 Piano Technique</h4><p>Scales, arpeggios, sight-reading, and pieces carefully selected to build technical skill and musical expression at every level.</p></div>
+    <div class="curr-card fi"><h4>📖 Music Theory</h4><p>Understanding notation, rhythm, harmony, and structure — the foundation that turns playing notes into making music.</p></div>
+    <div class="curr-card fi"><h4>🎤 Performance Skills</h4><p>Building confidence for exams, recitals, and beyond. Students learn to communicate emotion and artistry through their playing.</p></div>
+    <div class="curr-card fi"><h4>📋 Exam Preparation</h4><p>Focused coaching for ABRSM and RSL graded exams, with mock assessments and detailed feedback to ensure students are exam-ready.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="sec-head fi">
+    <div class="sec-pill">Kind Words</div>
+    <h2 class="sec-title">What parents & students say 💬</h2>
+    <p class="sec-sub">We'd love to hear about your experience with Merlyn's lessons!</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card fi"><p class="test-text">Merlyn is currently collecting feedback from students and parents. If your child has taken lessons, your review would mean the world!</p><div class="test-author">— Your review matters</div><div class="test-role">Parent / Student</div></div>
+    <div class="test-card fi"><p class="test-text">Had a great experience? Share it on Google so other families in West Byfleet can discover Merlyn's piano lessons too.</p><div class="test-author">— Help others find us</div><div class="test-role">Community</div></div>
+  </div>
+  <div style="text-align:center;margin-top:2rem;" class="fi">
+    <a href="https://share.google/YdU9eHM4ZJ5qCzMve" target="_blank" class="btn btn-fun" style="font-size:1rem;padding:1rem 2.5rem;">⭐ Leave a Google Review</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="sec-head fi">
+    <div class="sec-pill">Gallery</div>
+    <h2 class="sec-title">Moments from lessons & events 📸</h2>
+    <p class="sec-sub">Photos coming soon</p>
+  </div>
+  <div class="gal-grid">
+    <div class="gal-ph fi"><div class="ico">📸</div><span>Class photo</span></div>
+    <div class="gal-ph fi"><div class="ico">🎹</div><span>Lesson in progress</span></div>
+    <div class="gal-ph fi"><div class="ico">🎤</div><span>Student performance</span></div>
+  </div>
+</section>
+
+<!-- AVAILABILITY -->
+<section id="availability">
+  <div class="sec-head fi">
+    <div class="sec-pill">Availability</div>
+    <h2 class="sec-title">Merlyn's Tutoring Window 🗓️</h2>
+    <p class="sec-sub">Check available slots and book your preferred time</p>
+  </div>
+  <div class="avail-wrap">
+    <div class="avail-schedule fi">
+      <h4>📅 Weekly Schedule</h4>
+      <table class="avail-table">
+        <thead>
+          <tr><th>Day</th><th>Time Slots</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="day-dot"></span>Monday</td>
+            <td>3:00 PM – 7:00 PM</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-dot"></span>Tuesday</td>
+            <td>3:00 PM – 7:00 PM</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-dot"></span>Wednesday</td>
+            <td>3:00 PM – 7:00 PM</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-dot"></span>Thursday</td>
+            <td>3:00 PM – 7:00 PM</td>
+            <td><span class="status-badge status-limited">Limited</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-dot"></span>Friday</td>
+            <td>3:00 PM – 6:00 PM</td>
+            <td><span class="status-badge status-open">Open</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-dot"></span>Saturday</td>
+            <td>9:00 AM – 1:00 PM</td>
+            <td><span class="status-badge status-limited">Limited</span></td>
+          </tr>
+          <tr>
+            <td><span class="day-dot"></span>Sunday</td>
+            <td>—</td>
+            <td><span class="status-badge status-closed">Closed</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="avail-cta fi">
+      <div class="emoji-big">🎹</div>
+      <h4>Ready to book a lesson?</h4>
+      <p>Pick a time that works for your family and get in touch — your first trial lesson is free!</p>
+      <a href="#contact" class="btn btn-fun">✨ Book a Free Trial</a>
+      <div class="avail-quick">
+        <div class="avail-quick-item">
+          <div class="avail-quick-icon">📧</div>
+          <a href="mailto:merlynliz@gmail.com" style="color:var(--text2);text-decoration:none;">merlynliz@gmail.com</a>
+        </div>
+        <div class="avail-quick-item">
+          <div class="avail-quick-icon">📱</div>
+          <a href="tel:+447436192707" style="color:var(--text2);text-decoration:none;">+44 7436 192 707</a>
+        </div>
+        <div class="avail-quick-item">
+          <div class="avail-quick-icon">💬</div>
+          <span>WhatsApp available</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head fi">
+    <div class="sec-pill">Get in Touch</div>
+    <h2 class="sec-title">Start your musical journey 🚀</h2>
+    <p class="sec-sub">Book a free trial lesson or ask any questions</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info fi">
+      <h3>Let's talk <span class="hl">music</span> 🎶</h3>
+      <p>Whether you're looking for your child's first piano lesson or preparing for graded exams, I'd love to hear from you. Reach out to book a free trial or learn more.</p>
+      <div class="ci"><div class="ci-icon">📧</div><div><div class="ci-lbl">Email</div><div class="ci-val"><a href="mailto:merlynliz@gmail.com">merlynliz@gmail.com</a></div></div></div>
+      <div class="ci"><div class="ci-icon">📱</div><div><div class="ci-lbl">Phone</div><div class="ci-val"><a href="tel:+447436192707">+44 7436 192 707</a></div></div></div>
+      <div class="ci"><div class="ci-icon">📍</div><div><div class="ci-lbl">Location</div><div class="ci-val">West Byfleet, Surrey</div></div></div>
+    </div>
+    <div class="contact-form fi">
+      <h4>Send a message ✉️</h4>
+      <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+        <input type="hidden" name="subject" value="New Piano Lesson Enquiry from Website">
+        <input type="hidden" name="from_name" value="Merlyn Piano Website">
+        <div class="fg"><label>Your Name</label><input type="text" name="name" placeholder="Full name" required></div>
+        <div class="fg"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required></div>
+        <div class="fg"><label>Lesson Type</label><select name="lesson_type"><option value="">Select an option</option><option value="In-Person Piano Lesson">In-Person Piano Lesson</option><option value="Online Piano Lesson">Online Piano Lesson</option><option value="Exam Preparation (ABRSM/RSL)">Exam Preparation (ABRSM/RSL)</option><option value="Other / General Enquiry">Other / General Enquiry</option></select></div>
+        <div class="fg"><label>Message</label><textarea name="message" placeholder="Tell me about your child's experience level, goals, or any questions you have..." required></textarea></div>
+        <button type="submit" class="form-btn">🎵 Send Message</button>
+      </form>
+      <div id="formSuccess" style="display:none;text-align:center;padding:2rem;">
+        <div style="font-size:3rem;margin-bottom:1rem;">🎶</div>
+        <h4 style="color:var(--teal);margin-bottom:.5rem;">Message Sent!</h4>
+        <p style="color:var(--text3);">Thank you for your message! Merlyn will get back to you soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Merlyn 🎵</div>
+  <p>Piano Teacher — West Byfleet, Surrey · ABRSM & RSL Exam Preparation</p>
+  <p style="margin-top:.5rem;font-size:.72rem;opacity:.4;">© 2026 Merlyn Liselle Thomas Cyril. All rights reserved.</p>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
+});
+// Mobile menu
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open'));
+});
+// Fade-in on scroll
+const obs=new IntersectionObserver(e=>{
+  e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('vis');});
+},{threshold:.1});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+// Interactive piano
+const ctx=new(window.AudioContext||window.webkitAudioContext)();
+const fr={C:261.63,D:293.66,E:329.63,F:349.23,G:392,A:440,B:493.88,C2:523.25};
+document.querySelectorAll('.wk').forEach(k=>{
+  k.addEventListener('click',()=>{
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.type='triangle';o.frequency.value=fr[k.dataset.note]||440;
+    g.gain.setValueAtTime(.3,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.8);
+    o.connect(g).connect(ctx.destination);o.start();o.stop(ctx.currentTime+.8);
+  });
+});
+// Contact form - Web3Forms
+const form = document.getElementById('contactForm');
+if(form) {
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = form.querySelector('.form-btn');
+    btn.textContent = '⏳ Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      });
+      const data = await res.json();
+      if(data.success) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else {
+        btn.textContent = '🎵 Send Message';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again or email directly.');
+      }
+    } catch(err) {
+      btn.textContent = '🎵 Send Message';
+      btn.disabled = false;
+      alert('Connection error. Please try again or email directly.');
+    }
+  });
+}
+</script>
+</body>
+</html>
